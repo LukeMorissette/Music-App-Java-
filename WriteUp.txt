@@ -1,0 +1,43 @@
+In this project I wrote 7 classes: Account, Listener, Content, Podcast, Playlist, Album, and MuiscAppDriver. I also 
+eventually write a text file titled Favorites.txt, but that comes from within my code. To start, since the only difference 
+between an Account and a Listener account is that the Listener Account has a favorites list, I decided to make Account the 
+parent class for Listener. To be honest I didn’t actually need to write the Account class as I didn’t even use it in my driver, 
+but for the sake of the project the parent child relationship worked well enough. I then wrote my Content and Podcast classes. 
+Similarly the only difference between those two classes was that the podcast class had Episode numbers, so I made Podcast the 
+child class for Content. I reference my Content and Podcast classes in my Listener class in the addfavorites() method because my 
+favorites is a LinkedList of different Content specified by the user. I also implemented the compareTo method in my Content 
+class, so that later on I could sort my songs by number of streams which was a requirement for the project. I implement the 
+compareTo method in my addfavorites() method. Finally I wrote my Playlist and Album classes. Since the only difference 
+between a Playlist and an Albums makeup is that the Albums can’t contain podcasts, I made Playlist the parent and Album the 
+child. I then created and addContent() class for Playlists that would add a “Content” to a LinkedList. This method also 
+implemented the compareTo method in order to sort the Content. The only edit I made to Album class, aside from my toString() 
+obviously, was that in my addContent() class I added an if else statement that said:
+if (c instanceof Podcast){
+           System.out.println("You can't add a Podcast to an Album");
+       }
+       else {
+           super.addContent(c);
+       }
+This statement would specifically pull out Podcasts allowing the Albums to remain song only. I also had to make two different 
+“play” methods within my Playlist class. One was shuffle() which is later on used in the driver to play Playlists and the other 
+is playAlbum(). The playAlbum() method “plays” each song in an Album in order from most to least streams. The shuffle() method 
+plays each song in your Playlist in a completely random order. Since Album is a child class of Playlist it doesn’t matter that 
+this method is in my Playlist class and not Album. Finally I wrote my Driver class. This class first using the addContent(); 
+method initializes a couple of default Albums and Playlists. Then using a Scanner asks the user to input and integer to do one
+ of the following:
+1.Create a listener account, 2.List all Playlists and Albums and their contents, 3.Add songs to an existing playlist, 4.Shuffle
+ an existing Playlist or listen to an Album, 5.Add a song or podcast to favorites, 6.Export all of a listener’s favorites out to
+  a file in ascending order by times streamed, 7.Exit
+All of this was happening within a while loop that would only exit if the input was 7. I added a try catch statement that would 
+catch if you didn’t input an Integer and just restart the while loop and print out “That's okay! You need to input an integer 
+next time though!”
+instead of causing an error and having to restart the program completely. I then created a bunch of if statements that would 
+carry out the prompted function based on which integer you chose. Each of these statements has a condition that will not allow 
+you to carry out the function of that if statement without first creating a Listener account (or inputting 1). Overall this was 
+a much easier project than spoons and I think I managed my time much better (it helped that you gave us almost an extra week the
+ day I was planning on turning this in haha). My code runs very smoothly in my opinion and I’m very happy with the final product.
+  In the future I’d love to make this program more user friendly and get to a point where the users can fluidly navigate through 
+  the different playlists and be able to pick and choose songs they want to “play”. It would also be pretty cool if the music 
+  could actually play.
+
+Thanks for a great semester! :)
